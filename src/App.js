@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import babyNamesData from "./babyNamesData.json";
+import "./App.css";
+import ListBabyNames from "./ListBabyNames";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {babyNamesData
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map((babyData) => {
+          return <ListBabyNames key={babyData.id} babyName={babyData} />;
+        })}
     </div>
   );
 }
 
 export default App;
+
+/*
+HOW DO I DISPLAY BOYS & GIRLS NAME DIFFERENTLY
+PROJECT ON GITHUB & NETLIFY
+*/
